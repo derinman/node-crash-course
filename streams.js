@@ -6,8 +6,8 @@ const writeStream = fs.createWriteStream('./docs/blog4.txt');
 readStream.on('data', chunk => {
   // console.log('---- NEW CHUNK ----');
   // console.log(chunk);
-  writeStream.write('\nNEW CHUNK:\n');
-  writeStream.write(chunk);
+  writeStream.write('\nNEW CHUNK:\n');//這會寫到blog4.txt
+  writeStream.write(chunk);//這會寫到blog4.txt
 });
 
 // piping
