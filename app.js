@@ -8,7 +8,8 @@ app.listen(3000);
 
 app.get('/', (req, res) => {
   // res.send('<p>home page</p>');
-  res.sendFile('./views/index.html', { root: __dirname });
+  console.log('from express app')
+  res.sendFile('./views/index.html', { root: __dirname });// default is absolute path, so tell it root:......
 });
 
 app.get('/about', (req, res) => {
