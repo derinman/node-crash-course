@@ -7,11 +7,18 @@ const Blog = require('./models/blog');
 const app = express();
 
 // connect to mongodb & listen for requests
-const dbURI = "mongodb+srv://netninja:test1234@net-ninja-tuts-del96.mongodb.net/node-tuts";
+const dbURI = "mongodb+srv://inman:yanziwindows22@nodetuts.wjc4a.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
 
 mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(result => app.listen(3000))
-  .catch(err => console.log(err));
+  .then(
+    result => {
+      app.listen(3000)
+      console.log('connect to mongoDB')
+      //console.log(result)
+    }
+  ).catch(
+    err => console.log(err)
+    );
 
 // register view engine
 app.set('view engine', 'ejs');
@@ -52,7 +59,7 @@ app.get('/all-blogs', (req, res) => {
 });
 
 app.get('/single-blog', (req, res) => {
-  Blog.findById('5ea99b49b8531f40c0fde689')
+  Blog.findById('60b36e2c0ff3d707b892b78b')
     .then(result => {
       res.send(result);
     })
