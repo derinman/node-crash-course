@@ -7,7 +7,7 @@ const Blog = require('./models/blog');
 const app = express();
 
 // connect to mongodb & listen for requests
-const dbURI = "mongodb+srv://netninja:test1234@net-ninja-tuts-del96.mongodb.net/node-tuts";
+const dbURI = "mongodb+srv://inman:yanziwindows22@nodetuts.wjc4a.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
 
 mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(result => app.listen(3000))
@@ -78,7 +78,9 @@ app.delete('/blogs/:id', (req, res) => {
   
   Blog.findByIdAndDelete(id)
     .then(result => {
+      //這個請求由detail.ejs javascript發出，不能直接用上面的方法redirect
       res.json({ redirect: '/blogs' });
+      //將這個json傳回detail.ejs javascript，請那邊redirect
     })
     .catch(err => {
       console.log(err);
